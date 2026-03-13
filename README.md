@@ -11,9 +11,8 @@
 
 ---
 
-## 🌐 Live Website
-
-**[🔗 View Live Bank Marketing Project Website](PUT_YOUR_LIVE_WEBSITE_URL_HERE)**
+🌐 **Live Website:**
+[View Live Website](https://khaledalzeer.github.io/bank-marketing-ml-project/Bank-Marketing-ML-Project/website/)
 
 ---
 
@@ -394,7 +393,7 @@ Decision Support Systems, 62, 22-31.
 
 ## 🔗 Important Links
 
-- 🌐 **Live Website:** [PUT_YOUR_LIVE_URL_HERE]
+- 🌐 **Live Website:** [View Live Website](https://khaledalzeer.github.io/bank-marketing-ml-project/Bank-Marketing-ML-Project/website/)
 - 📦 **Repository:** [github.com/khaledAlzeer/bank-marketing-ml-project](https://github.com/khaledAlzeer/bank-marketing-ml-project)
 - ☁️ **Google Drive (Project Files + Colab Notebooks):** [ML Project Folder](https://drive.google.com/drive/folders/1w9RMLklaXUzbeOahmasf52B8WRysMDAc)
 - 📊 **Dataset Source:** [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Bank+Marketing)
