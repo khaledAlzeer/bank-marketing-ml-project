@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Results — Bank Marketing Campaign</title>
+  <!-- ============================================
+       Favicon
+       ============================================ -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏦</text></svg>"/>
+  <!-- ============================================
+       Main Stylesheet
+       ============================================ -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVBAR
+       ============================================ -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🏦 Bank <span>Marketing</span></a>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+        <li><a href="dataset.html">Dataset</a></li>
+        <li><a href="eda.html">EDA</a></li>
+        <li><a href="preprocessing.html">Preprocessing</a></li>
+        <li class="dropdown">
+          <a href="#">Models ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="logistic.html">📈 Logistic Regression</a></li>
+            <li><a href="decision_tree.html">🌿 Decision Tree</a></li>
+            <li><a href="random_forest.html">🌲 Random Forest</a></li>
+            <li><a href="xgboost.html">⚡ XGBoost</a></li>
+          </ul>
+        </li>
+        <li><a href="results.html" class="active">Results</a></li>
+        <li><a href="conclusion.html">Conclusion</a></li>
+        <li><a href="team.html">Team</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- END NAVBAR -->
+
+
+  <!-- ============================================
+       PAGE HERO
+       ============================================ -->
+  <section class="page-hero">
+    <div class="hero-content">
+      <div class="hero-badge">📊 Final Comparison</div>
+      <h1>Model <span>Results</span></h1>
+      <p>A complete side-by-side comparison of all 4 models</p>
+    </div>
+  </section>
+  <!-- END PAGE HERO -->
+
+
+  <!-- ============================================
+       SECTION 1 — Winner Card (XGBoost)
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>🏆 Best Model</h2>
+        <p>The clear winner across all metrics</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-left">
+          <div class="winner-icon">⚡</div>
+          <div class="winner-badge">🏆 Best Model</div>
+          <h2>XGBoost</h2>
+          <p>
+            XGBoost outperformed all other models across
+            every key metric — accuracy, F1-score, and AUC.
+            Its sequential error-correction approach makes it
+            the most powerful choice for this banking dataset.
+          </p>
+          <a href="xgboost.html" class="btn btn-primary">
+            <i class="fas fa-bolt"></i> View XGBoost Details
+          </a>
+        </div>
+        <div class="winner-right">
+          <div class="winner-metric">
+            <span class="wm-val">88.2%</span>
+            <span class="wm-lab">Accuracy</span>
+          </div>
+          <div class="winner-metric">
+            <span class="wm-val">0.46</span>
+            <span class="wm-lab">F1 Score (Class 1)</span>
+          </div>
+          <div class="winner-metric">
+            <span class="wm-val">0.79</span>
+            <span class="wm-lab">AUC Score</span>
+          </div>
+          <div class="winner-metric">
+            <span class="wm-val">0.42</span>
+            <span class="wm-lab">Recall (Class 1)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END WINNER CARD -->
+
+
+  <!-- ============================================
+       SECTION 2 — Full Comparison Table
+       (Ordered: XGBoost, RF, LR, DT)
+       ============================================ -->
+  <section class="section section-alt">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>📋 Full Comparison Table</h2>
+        <p>All metrics for all 4 models</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Accuracy</th>
+              <th>Precision (C1)</th>
+              <th>Recall (C1)</th>
+              <th>F1 (C1)</th>
+              <th>AUC</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 1st: XGBoost -->
+            <tr class="xgb-best-row">
+              <td>
+                <a href="xgboost.html" class="model-link">
+                  <strong>⚡ XGBoost</strong>
+                </a>
+              </td>
+              <td><strong>88.2%</strong></td>
+              <td><strong>0.50</strong></td>
+              <td><strong>0.42</strong></td>
+              <td><strong>0.46</strong></td>
+              <td><strong>0.79</strong></td>
+              <td><span class="badge badge-green">🏆 1st</span></td>
+            </tr>
+
+            <!-- 2nd: Random Forest -->
+            <tr>
+              <td>
+                <a href="random_forest.html" class="model-link">
+                  🌲 Random Forest
+                </a>
+              </td>
+              <td>87.9%</td>
+              <td>0.48</td>
+              <td>0.34</td>
+              <td>0.40</td>
+              <td>0.77</td>
+              <td><span class="badge badge-blue">2nd</span></td>
+            </tr>
+
+            <!-- 3rd: Logistic Regression -->
+            <tr>
+              <td>
+                <a href="logistic.html" class="model-link">
+                  📈 Logistic Regression
+                </a>
+              </td>
+              <td>87.6%</td>
+              <td>0.46</td>
+              <td>0.38</td>
+              <td>0.42</td>
+              <td>0.73</td>
+              <td><span class="badge badge-orange">3rd</span></td>
+            </tr>
+
+            <!-- 4th: Decision Tree -->
+            <tr>
+              <td>
+                <a href="decision_tree.html" class="model-link">
+                  🌿 Decision Tree
+                </a>
+              </td>
+              <td>81.3%</td>
+              <td>0.28</td>
+              <td>0.37</td>
+              <td>0.32</td>
+              <td>0.61</td>
+              <td><span class="badge badge-red">4th</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <!-- END COMPARISON TABLE -->
+
+
+  <!-- ============================================
+       SECTION 3 — Metric Bars Comparison
+       (Ordered: XGBoost first, then RF, LR, DT)
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>📊 Visual Comparison</h2>
+        <p>Metric by metric — bar comparison</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="metrics-comparison-grid">
+
+        <!-- Accuracy -->
+        <div class="metric-compare-card">
+          <h4>🎯 Accuracy</h4>
+          <div class="mc-bars">
+            <!-- 1st: XGBoost -->
+            <div class="mc-bar-item mc-winner">
+              <span class="mc-label">⚡ XGBoost 🏆</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="88.2"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">88.2%</span>
+            </div>
+
+            <!-- 2nd: Random Forest -->
+            <div class="mc-bar-item">
+              <span class="mc-label">🌲 Random Forest</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="87.9"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">87.9%</span>
+            </div>
+
+            <!-- 3rd: Logistic Regression -->
+            <div class="mc-bar-item">
+              <span class="mc-label">📈 Logistic Regression</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="87.6"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">87.6%</span>
+            </div>
+
+            <!-- 4th: Decision Tree -->
+            <div class="mc-bar-item">
+              <span class="mc-label">🌿 Decision Tree</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="81.3"
+                     style="width:0%; background:linear-gradient(to right,#f39c12,#e67e22);">
+                </div>
+              </div>
+              <span class="mc-val">81.3%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- F1 Score Class 1 -->
+        <div class="metric-compare-card">
+          <h4>⚖️ F1-Score (Class 1)</h4>
+          <div class="mc-bars">
+            <!-- 1st: XGBoost -->
+            <div class="mc-bar-item mc-winner">
+              <span class="mc-label">⚡ XGBoost 🏆</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="46"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.46</span>
+            </div>
+
+            <!-- 2nd: Random Forest -->
+            <div class="mc-bar-item">
+              <span class="mc-label">🌲 Random Forest</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="40"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.40</span>
+            </div>
+
+            <!-- 3rd: Logistic Regression -->
+            <div class="mc-bar-item">
+              <span class="mc-label">📈 Logistic Regression</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="42"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.42</span>
+            </div>
+
+            <!-- 4th: Decision Tree -->
+            <div class="mc-bar-item">
+              <span class="mc-label">🌿 Decision Tree</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="32"
+                     style="width:0%; background:linear-gradient(to right,#f39c12,#e67e22);">
+                </div>
+              </div>
+              <span class="mc-val">0.32</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUC -->
+        <div class="metric-compare-card">
+          <h4>📈 AUC Score</h4>
+          <div class="mc-bars">
+            <!-- 1st: XGBoost -->
+            <div class="mc-bar-item mc-winner">
+              <span class="mc-label">⚡ XGBoost 🏆</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="79"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.79</span>
+            </div>
+
+            <!-- 2nd: Random Forest -->
+            <div class="mc-bar-item">
+              <span class="mc-label">🌲 Random Forest</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="78"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.78</span>
+            </div>
+
+            <!-- 3rd: Logistic Regression -->
+            <div class="mc-bar-item">
+              <span class="mc-label">📈 Logistic Regression</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="73"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.73</span>
+            </div>
+
+            <!-- 4th: Decision Tree -->
+            <div class="mc-bar-item">
+              <span class="mc-label">🌿 Decision Tree</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="62"
+                     style="width:0%; background:linear-gradient(to right,#f39c12,#e67e22);">
+                </div>
+              </div>
+              <span class="mc-val">0.62</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recall Class 1 -->
+        <div class="metric-compare-card">
+          <h4>📡 Recall (Class 1)</h4>
+          <div class="mc-bars">
+            <!-- 1st: XGBoost -->
+            <div class="mc-bar-item mc-winner">
+              <span class="mc-label">⚡ XGBoost 🏆</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="42"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.42</span>
+            </div>
+
+            <!-- 2nd: Random Forest -->
+            <div class="mc-bar-item">
+              <span class="mc-label">🌲 Random Forest</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="31"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.31</span>
+            </div>
+
+            <!-- 3rd: Logistic Regression -->
+            <div class="mc-bar-item">
+              <span class="mc-label">📈 Logistic Regression</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="35"
+                     style="width:0%"></div>
+              </div>
+              <span class="mc-val">0.35</span>
+            </div>
+
+            <!-- 4th: Decision Tree -->
+            <div class="mc-bar-item">
+              <span class="mc-label">🌿 Decision Tree</span>
+              <div class="bar-track">
+                <div class="bar-fill mc-fill" data-width="30"
+                     style="width:0%; background:linear-gradient(to right,#f39c12,#e67e22);">
+                </div>
+              </div>
+              <span class="mc-val">0.30</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END METRIC BARS -->
+
+
+  <!-- ============================================
+       SECTION 4 — ROC Curves Gallery
+       (Ordered: XGBoost first, then RF, LR, DT)
+       ============================================ -->
+  <section class="section section-alt">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>📈 ROC Curves — All Models</h2>
+        <p>Visual comparison of discrimination ability</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="grid-2">
+        <!-- 1st: XGBoost (Winner) -->
+        <div class="img-card roc-winner">
+          <img src="images/models/roc_curve_xgb.png"
+               alt="ROC Curve - XGBoost"/>
+          <div class="img-card-body">
+            <h4>⚡ XGBoost — AUC: 0.79 🏆</h4>
+          </div>
+        </div>
+
+        <!-- 2nd: Random Forest -->
+        <div class="img-card">
+          <img src="images/models/roc_curve_rf.png"
+               alt="ROC Curve - Random Forest"/>
+          <div class="img-card-body">
+            <h4>🌲 Random Forest — AUC: 0.78</h4>
+          </div>
+        </div>
+
+        <!-- 3rd: Logistic Regression -->
+        <div class="img-card">
+          <img src="images/models/roc_curve_lr.png"
+               alt="ROC Curve - Logistic Regression"/>
+          <div class="img-card-body">
+            <h4>📈 Logistic Regression — AUC: 0.73</h4>
+          </div>
+        </div>
+
+        <!-- 4th: Decision Tree -->
+        <div class="img-card">
+          <img src="images/models/roc_curve_dt.png"
+               alt="ROC Curve - Decision Tree"/>
+          <div class="img-card-body">
+            <h4>🌿 Decision Tree — AUC: 0.62</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END ROC CURVES -->
+
+
+  <!-- ============================================
+       SECTION 5 — Confusion Matrices Gallery
+       (Ordered: XGBoost first, then RF, LR, DT)
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>🔢 Confusion Matrices — All Models</h2>
+        <p>True vs predicted classifications</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="grid-2">
+        <!-- 1st: XGBoost (Winner) -->
+        <div class="img-card roc-winner">
+          <img src="images/models/confusion_matrix_xgb.png"
+               alt="Confusion Matrix - XGBoost"/>
+          <div class="img-card-body">
+            <h4>⚡ XGBoost 🏆</h4>
+          </div>
+        </div>
+
+        <!-- 2nd: Random Forest -->
+        <div class="img-card">
+          <img src="images/models/confusion_matrix_rf.png"
+               alt="Confusion Matrix - Random Forest"/>
+          <div class="img-card-body">
+            <h4>🌲 Random Forest</h4>
+          </div>
+        </div>
+
+        <!-- 3rd: Logistic Regression -->
+        <div class="img-card">
+          <img src="images/models/confusion_matrix_lr.png"
+               alt="Confusion Matrix - Logistic Regression"/>
+          <div class="img-card-body">
+            <h4>📈 Logistic Regression</h4>
+          </div>
+        </div>
+
+        <!-- 4th: Decision Tree -->
+        <div class="img-card">
+          <img src="images/models/confusion_matrix_dt.png"
+               alt="Confusion Matrix - Decision Tree"/>
+          <div class="img-card-body">
+            <h4>🌿 Decision Tree</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END CONFUSION MATRICES -->
+
+
+  <!-- ============================================
+       NEXT STEP CTA
+       ============================================ -->
+  <section class="next-step-cta">
+    <div class="container">
+      <div class="next-step-content">
+        <span class="next-step-label">Next Step</span>
+        <h3>📝 Conclusion</h3>
+        <p>Final insights, recommendations and project wrap-up</p>
+        <a href="conclusion.html" class="btn btn-primary">
+          <i class="fas fa-arrow-right"></i> Go to Conclusion
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- END NEXT STEP -->
+
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer>
+    <p>
+      🏦 Bank Marketing Campaign &nbsp;|&nbsp;
+      Machine Learning Project &nbsp;|&nbsp;
+      <span>Al-Zaytoonah University of Jordan (ZUJ) — 2026</span> &nbsp;|&nbsp;
+      Supervised by <span>Ms. Nesreen Hamad</span>
+    </p>
+  </footer>
+  <!-- END FOOTER -->
+
+    <!-- ============================================
+        JAVASCRIPT
+        ============================================ -->
+    <!--
+    <script>
+      /* ----- Mobile Menu Toggle ----- */
+      function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('open');
+      }
+
+      /* ----- Active nav link ----- */
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add('active');
+        }
+      });
+
+      /* ----- Animate metric bars on scroll ----- */
+      const mcBars = document.querySelectorAll('.mc-fill');
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const targetWidth = entry.target.getAttribute('data-width');
+            entry.target.style.width = targetWidth + '%';
+          }
+        });
+      }, { threshold: 0.3 });
+      mcBars.forEach(bar => barObserver.observe(bar));
+
+      /* ----- Animate winner card ----- */
+      const winnerCard = document.querySelector('.winner-card');
+      const winnerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('winner-visible');
+          }
+        });
+      }, { threshold: 0.2 });
+      if (winnerCard) winnerObserver.observe(winnerCard);
+    </script>
+    -->
+  <script src="js/main.js"></script>
+
+  <!-- ============================================
+       Floating Repository Button (Fixed)
+       ============================================ -->
+  <a class="repo-float"
+     href="https://github.com/khaledAlzeer/bank-marketing-ml-project"
+     target="_blank"
+     title="Project Repository">
+    <i class="fab fa-github"></i>
+    <span>Repo</span>
+  </a>
+
+</body>
+</html>

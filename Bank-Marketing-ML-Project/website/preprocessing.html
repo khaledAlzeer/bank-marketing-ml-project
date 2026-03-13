@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preprocessing — Bank Marketing Campaign</title>
+  <!-- ============================================
+       Favicon
+       ============================================ -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏦</text></svg>"/>
+  <!-- ============================================
+       Main Stylesheet
+       ============================================ -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVBAR
+       ============================================ -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🏦 Bank <span>Marketing</span></a>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+        <li><a href="dataset.html">Dataset</a></li>
+        <li><a href="eda.html">EDA</a></li>
+        <li><a href="preprocessing.html" class="active">Preprocessing</a></li>
+        <li class="dropdown">
+          <a href="#">Models ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="logistic.html">📈 Logistic Regression</a></li>
+            <li><a href="decision_tree.html">🌿 Decision Tree</a></li>
+            <li><a href="random_forest.html">🌲 Random Forest</a></li>
+            <li><a href="xgboost.html">⚡ XGBoost</a></li>
+          </ul>
+        </li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="conclusion.html">Conclusion</a></li>
+        <li><a href="team.html">Team</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- END NAVBAR -->
+
+
+  <!-- ============================================
+       PAGE HERO
+       ============================================ -->
+  <section class="page-hero">
+    <div class="hero-content">
+      <div class="hero-badge">⚙️ Data Preparation</div>
+      <h1>Data <span>Preprocessing</span></h1>
+      <p>Cleaning, transforming, and balancing data before modeling</p>
+    </div>
+  </section>
+  <!-- END PAGE HERO -->
+
+
+  <!-- ============================================
+       SECTION 1 — Overview
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>📌 Why Preprocessing?</h2>
+        <p>Raw data is never ready for machine learning</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="pre-overview">
+        <div class="pre-overview-text">
+          <p>
+            Raw data contains <strong>noise, inconsistencies, and imbalances</strong>
+            that can mislead machine learning models. Preprocessing transforms
+            raw data into a clean, structured format that maximizes model performance.
+          </p>
+          <p>
+            In this project, preprocessing involved <strong>9 key steps</strong>:
+            from handling missing values all the way to balancing the dataset
+            using <strong>SMOTE</strong>.
+          </p>
+          <a href="https://colab.research.google.com/drive/1etSir-C0c7FK3tFD0tyopzZZbcfRWShU"
+             target="_blank" class="btn btn-primary" style="margin-top:1rem;">
+            <i class="fas fa-external-link-alt"></i> Open Preprocessing Notebook
+          </a>
+        </div>
+        <div class="pre-overview-steps">
+          <div class="pre-step-badge">1️⃣ Check Duration</div>
+          <div class="pre-step-badge">2️⃣ Remove Duration=0</div>
+          <div class="pre-step-badge">3️⃣ Fix Pdays</div>
+          <div class="pre-step-badge">4️⃣ Encoding</div>
+          <div class="pre-step-badge">5️⃣ Feature Split</div>
+          <div class="pre-step-badge">6️⃣ Train-Test Split</div>
+          <div class="pre-step-badge">7️⃣ Scaling</div>
+          <div class="pre-step-badge">8️⃣ SMOTE</div>
+          <div class="pre-step-badge">9️⃣ Export</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END OVERVIEW -->
+
+
+  <!-- ============================================
+       SECTION 2 — Steps
+       ============================================ -->
+  <section class="section section-alt">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>🔧 Preprocessing Steps</h2>
+        <p>A detailed walkthrough of each step</p>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">01</div>
+        <div class="pre-step-content">
+          <h3>🔍 Check Duration = 0</h3>
+          <p>
+            Duration represents the call duration in seconds. If Duration = 0,
+            it means no real call was made. We need to check how many rows have
+            Duration = 0 before deciding what to do.
+          </p>
+          <div class="pre-code">
+            <pre># Check Duration = 0
+print("Duration = 0 rows:", (df['duration'] == 0).sum())
+print("Total rows:", len(df))
+print("Percentage:", round(
+    (df['duration'] == 0).sum() / len(df) * 100, 2), "%")</pre>
+          </div>
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span><strong>Result:</strong> Only 3 rows (0.01%) have Duration = 0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">02</div>
+        <div class="pre-step-content">
+          <h3>🗑️ Remove Duration = 0 Rows</h3>
+          <p>
+            Only 3 rows have Duration = 0 (0.01% of data). This is a very small
+            number, so we can safely remove them without losing important information.
+          </p>
+          <div class="pre-code">
+            <pre># Remove Duration = 0 rows
+df = df[df['duration'] != 0]
+
+print("✅ Removed Duration = 0 rows!")
+print("New Shape:", df.shape)
+print("Rows removed:", 45211 - len(df))</pre>
+          </div>
+          <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i>
+            <span><strong>Shape:</strong> 45,211 → 45,208 rows (removed 3 rows)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">03</div>
+        <div class="pre-step-content">
+          <h3>🔧 Fix Pdays = -1</h3>
+          <p>
+            Pdays represents the number of days since the client was last contacted
+            from a previous campaign. -1 means the client was never contacted before.
+            We replace -1 with 0 for better interpretation.
+          </p>
+          <div class="pre-code">
+            <pre># Fix Pdays = -1 → 0
+print("Before - Pdays = -1:", (df['pdays'] == -1).sum())
+
+df['pdays'] = df['pdays'].replace(-1, 0)
+
+print("After  - Pdays = -1:", (df['pdays'] == -1).sum())
+print("After  - Pdays = 0 :", (df['pdays'] == 0).sum())
+print("✅ Pdays fixed successfully!")</pre>
+          </div>
+          <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i>
+            <span><strong>Fixed:</strong> 36,951 rows with Pdays = -1 → 0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">04</div>
+        <div class="pre-step-content">
+          <h3>🔠 Encode Categorical Variables</h3>
+          <p>
+            Machine learning models require numerical input.
+            All categorical columns were encoded using
+            <strong>Label Encoding</strong> (binary) and
+            <strong>One-Hot Encoding</strong> (multi-value).
+          </p>
+          <div class="pre-code">
+            <pre>from sklearn.preprocessing import LabelEncoder
+
+le = LabelEncoder()
+
+# 1️⃣ Binary columns → Label Encoding
+binary_cols = ['default', 'housing', 'loan']
+for col in binary_cols:
+    df[col] = le.fit_transform(df[col])
+print("✅ Binary columns encoded!")
+
+# 2️⃣ Target column → Label Encoding
+df['y'] = le.fit_transform(df['y'])
+print("✅ Target column encoded!")
+
+# 3️⃣ Multi-value columns → One-Hot Encoding
+multi_cols = ['job', 'marital', 'education',
+              'contact', 'month', 'poutcome']
+df = pd.get_dummies(df, columns=multi_cols)
+print("✅ Multi-value columns encoded!")</pre>
+          </div>
+          <div class="pre-result-grid">
+            <div class="pre-result-item">
+              <span class="pre-res-label">Label Encoded</span>
+              <span class="badge badge-blue">default, housing, loan, y</span>
+            </div>
+            <div class="pre-result-item">
+              <span class="pre-res-label">One-Hot Encoded</span>
+              <span class="badge badge-orange">job, marital, education, contact, month, poutcome</span>
+            </div>
+          </div>
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span><strong>Result:</strong> Features expanded: 17 → 49 columns</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">05</div>
+        <div class="pre-step-content">
+          <h3>🎯 Split Features & Target</h3>
+          <p>
+            Separating the dataset into features (X) and target (y).
+            We also remove <code>duration</code> from features because
+            it directly affects the outcome and is not available before
+            the call is made in real-world scenarios. This prevents
+            <strong>data leakage</strong>.
+          </p>
+          <div class="pre-code">
+            <pre># Split Features & Target
+X = df.drop(['y', 'duration'], axis=1)
+y = df['y']
+
+print("✅ Split done successfully!")
+print("Features Shape (X):", X.shape)  # (45208, 47)
+print("Target Shape   (y):", y.shape)  # (45208,)
+print("\nTarget Distribution:")
+print(y.value_counts())
+print("\nPercentage:")
+print(round(y.value_counts(normalize=True) * 100, 2))</pre>
+          </div>
+          <div class="pre-result-grid">
+            <div class="pre-result-item">
+              <span class="pre-res-label">Features (X)</span>
+              <span class="badge badge-green">47 features</span>
+            </div>
+            <div class="pre-result-item">
+              <span class="pre-res-label">Target (y)</span>
+              <span class="badge badge-purple">Binary (0/1)</span>
+            </div>
+            <div class="pre-result-item">
+              <span class="pre-res-label">Removed</span>
+              <span class="badge badge-red">duration (data leakage prevention)</span>
+            </div>
+          </div>
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>
+              <strong>Why remove duration?</strong> Call duration is only known AFTER the call completes.
+              In production, we cannot use this to predict subscription. Removing it ensures our
+              model is deployable in real-world scenarios and prevents data leakage.
+            </span>
+          </div>
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>
+              <strong>Class Imbalance:</strong> 88.3% No (0) | 11.7% Yes (1) — Will be fixed with SMOTE
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">06</div>
+        <div class="pre-step-content">
+          <h3>✂️ Train-Test Split</h3>
+          <p>
+            Splitting the dataset into training (80%) and testing (20%) sets.
+            We split <strong>BEFORE</strong> applying SMOTE to avoid
+            <strong>data leakage</strong> — ensuring the test set represents
+            truly unseen data.
+          </p>
+          <div class="pre-code">
+            <pre>from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+print("✅ Split done successfully!")
+print("X_train:", X_train.shape)  # (36166, 47)
+print("X_test :", X_test.shape)   # (9042, 47)
+print("y_train:", y_train.shape)  # (36166,)
+print("y_test :", y_test.shape)   # (9042,)</pre>
+          </div>
+
+          <div class="split-visualization">
+            <div class="split-item">
+              <div class="split-icon">🏋️</div>
+              <h4>Training Set</h4>
+              <div class="split-stats">
+                <div class="split-stat">
+                  <span class="stat-val">36,166</span>
+                  <span class="stat-lab">Samples</span>
+                </div>
+                <div class="split-stat">
+                  <span class="stat-val">80%</span>
+                  <span class="stat-lab">Percentage</span>
+                </div>
+              </div>
+              <p class="split-desc">Used to train models</p>
+            </div>
+            <div class="split-arrow">→</div>
+            <div class="split-item">
+              <div class="split-icon">🧪</div>
+              <h4>Testing Set</h4>
+              <div class="split-stats">
+                <div class="split-stat">
+                  <span class="stat-val">9,042</span>
+                  <span class="stat-lab">Samples</span>
+                </div>
+                <div class="split-stat">
+                  <span class="stat-val">20%</span>
+                  <span class="stat-lab">Percentage</span>
+                </div>
+              </div>
+              <p class="split-desc">Used to evaluate models</p>
+            </div>
+          </div>
+
+          <div class="alert alert-success" style="margin-top:1.5rem;">
+            <i class="fas fa-check-circle"></i>
+            <span>
+              <strong>Stratified Split:</strong> Both train and test maintain the same
+              class distribution (88.3% / 11.7%) — ensures representative evaluation
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">07</div>
+        <div class="pre-step-content">
+          <h3>⚖️ Scale Numerical Features</h3>
+          <p>
+            Scaling numerical features so that all values are on the same scale.
+            We use <strong>StandardScaler</strong> which transforms values to:
+            Mean = 0, Standard Deviation = 1.
+            <strong>IMPORTANT:</strong> We fit the scaler ONLY on training data,
+            then transform both train and test sets to avoid data leakage.
+          </p>
+          <div class="pre-code">
+            <pre>from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+# Numerical columns to scale
+num_cols = ['age', 'balance', 'day', 'campaign',
+            'pdays', 'previous']
+
+# Fit scaler ONLY on training data
+X_train[num_cols] = scaler.fit_transform(X_train[num_cols])
+
+# Transform test data using training statistics
+X_test[num_cols]  = scaler.transform(X_test[num_cols])
+
+print("✅ Scaling done successfully!")
+print("\nAfter Scaling - X_train sample:")
+print(X_train[num_cols].describe().round(2))</pre>
+          </div>
+
+          <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i>
+            <span>
+              <strong>StandardScaler Applied:</strong> Fit on training → Transform both train & test
+            </span>
+          </div>
+
+          <div class="alert alert-warning" style="margin-top:1rem;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>
+              <strong>Why this order?</strong> Scaling AFTER train-test split prevents
+              test data statistics from influencing training — ensures fair evaluation
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">08</div>
+        <div class="pre-step-content">
+          <h3>🔄 SMOTE — Balance the Dataset</h3>
+          <p>
+            The dataset is heavily imbalanced (88.3% No / 11.7% Yes).
+            <strong>SMOTE (Synthetic Minority Over-sampling Technique)</strong>
+            generates synthetic samples for the minority class.
+            <strong>IMPORTANT:</strong> SMOTE is applied ONLY to training data
+            to prevent data leakage. Test data remains unchanged.
+          </p>
+          <div class="pre-code">
+            <pre>from imblearn.over_sampling import SMOTE
+
+smote = SMOTE(random_state=42)
+X_train_sm, y_train_sm = smote.fit_resample(X_train, y_train)
+
+print("✅ SMOTE applied successfully!")
+print("\nBefore SMOTE:")
+print(y_train.value_counts())
+print("\nAfter SMOTE:")
+print(y_train_sm.value_counts())
+print("\nPercentage After SMOTE:")
+print(round(y_train_sm.value_counts(normalize=True) * 100, 2))</pre>
+          </div>
+
+          <div class="smote-comparison">
+            <div class="smote-before">
+              <h4>Before SMOTE</h4>
+              <div class="smote-bar-wrap">
+                <div class="smote-label">
+                  <span>Class 0 (No)</span>
+                  <strong>31,935</strong>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill"
+                       style="width:88%;
+                       background:linear-gradient(to right,#e74c3c,#c0392b);">
+                  </div>
+                </div>
+              </div>
+              <div class="smote-bar-wrap">
+                <div class="smote-label">
+                  <span>Class 1 (Yes)</span>
+                  <strong>4,231</strong>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:12%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="smote-arrow">
+              <i class="fas fa-arrow-right"></i>
+              <span>SMOTE</span>
+            </div>
+            <div class="smote-after">
+              <h4>After SMOTE</h4>
+              <div class="smote-bar-wrap">
+                <div class="smote-label">
+                  <span>Class 0 (No)</span>
+                  <strong>31,935</strong>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:50%;"></div>
+                </div>
+              </div>
+              <div class="smote-bar-wrap">
+                <div class="smote-label">
+                  <span>Class 1 (Yes)</span>
+                  <strong>31,935</strong>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:50%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-success" style="margin-top:1rem;">
+            <i class="fas fa-check-circle"></i>
+            <span>
+              <strong>Perfect Balance Achieved:</strong> Training set: 63,870 rows (31,935 per class) |
+              Test set: 9,042 rows (unchanged)
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 9 -->
+      <div class="pre-step-card">
+        <div class="pre-step-num">09</div>
+        <div class="pre-step-content">
+          <h3>💾 Export Preprocessed Data</h3>
+          <p>
+            Exporting the preprocessed data as CSV files so we can use them
+            directly in the modeling notebooks. This saves computation time
+            and ensures consistency across all model training.
+          </p>
+          <div class="pre-code">
+            <pre># Combine X and y for export
+train_data = X_train_sm.copy()
+train_data['y'] = y_train_sm.values
+
+test_data = X_test.copy()
+test_data['y'] = y_test.values
+
+# Export to CSV
+train_data.to_csv('train.csv', index=False)
+test_data.to_csv('test.csv', index=False)
+
+print("✅ Data exported successfully!")
+print("train.csv shape:", train_data.shape)  # (63870, 48)
+print("test.csv shape :", test_data.shape)   # (9042, 48)</pre>
+          </div>
+
+          <div class="pre-result-grid">
+            <div class="pre-result-item">
+              <span class="pre-res-label">train.csv</span>
+              <span class="badge badge-green">63,870 × 48</span>
+            </div>
+            <div class="pre-result-item">
+              <span class="pre-res-label">test.csv</span>
+              <span class="badge badge-blue">9,042 × 48</span>
+            </div>
+          </div>
+
+          <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i>
+            <span>
+              <strong>Ready for Modeling:</strong> Both files include 47 features + 1 target column = 48 columns
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END STEPS -->
+
+
+  <!-- ============================================
+       SECTION 3 — Final Results
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>📊 Final Dataset Summary</h2>
+        <p>After all preprocessing steps</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="grid-4">
+        <div class="stat-card">
+          <div class="stat-icon">🏋️</div>
+          <div class="stat-value">63,870</div>
+          <div class="stat-label">Training Rows</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🧪</div>
+          <div class="stat-value">9,042</div>
+          <div class="stat-label">Testing Rows</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔢</div>
+          <div class="stat-value">47</div>
+          <div class="stat-label">Features</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚖️</div>
+          <div class="stat-value">50/50</div>
+          <div class="stat-label">Train Balance</div>
+        </div>
+      </div>
+
+      <!-- Summary Table -->
+      <div class="table-wrapper" style="margin-top:2.5rem;">
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Action</th>
+              <th>Result</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>01</strong></td>
+              <td>Check Duration = 0</td>
+              <td>Found 3 rows (0.01%)</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+            <tr>
+              <td><strong>02</strong></td>
+              <td>Remove Duration = 0</td>
+              <td>45,211 → 45,208 rows</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+            <tr>
+              <td><strong>03</strong></td>
+              <td>Fix Pdays = -1 → 0</td>
+              <td>Fixed 36,951 rows</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+            <tr>
+              <td><strong>04</strong></td>
+              <td>Encode Categorical</td>
+              <td>17 → 49 columns</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+            <tr>
+              <td><strong>05</strong></td>
+              <td>Split Features & Target</td>
+              <td>47 features + 1 target (removed duration)</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+            <tr>
+              <td><strong>06</strong></td>
+              <td>Train-Test Split</td>
+              <td>36,166 train (47 features) | 9,042 test (47 features)</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+            <tr>
+              <td><strong>07</strong></td>
+              <td>Scale Features (StandardScaler)</td>
+              <td>6 numerical features scaled on training data</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+            <tr>
+              <td><strong>08</strong></td>
+              <td>SMOTE Balancing</td>
+              <td>36,166 → 63,870 training rows (50/50 balance)</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+            <tr>
+              <td><strong>09</strong></td>
+              <td>Export Data</td>
+              <td>train.csv (63,870 × 48) + test.csv (9,042 × 48)</td>
+              <td><span class="badge badge-green">✅ Done</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+  <!-- END FINAL RESULTS -->
+
+
+  <!-- ============================================
+       SECTION 4 — Key Insights
+       ============================================ -->
+  <section class="section section-alt">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>💡 Key Preprocessing Insights</h2>
+        <p>Important concepts and best practices</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="insight-card">
+          <div class="insight-icon">⚠️</div>
+          <h4>Data Leakage Prevention</h4>
+          <p>
+            We split data into train/test BEFORE scaling and SMOTE.
+            This ensures test data remains completely unseen during
+            preprocessing, providing true performance estimates.
+          </p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">🔄</div>
+          <h4>Why SMOTE on Training Only?</h4>
+          <p>
+            SMOTE generates synthetic samples for minority class. Applying
+            it to test data would artificially inflate evaluation metrics.
+            We keep test distribution realistic (88.3/11.7).
+          </p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">🏆</div>
+          <h4>StandardScaler Order Matters</h4>
+          <p>
+            Fit the scaler on training data only, then use those statistics
+            to transform test data. This prevents test set statistics from
+            influencing the training process.
+          </p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">❌</div>
+          <h4>Why Remove Duration?</h4>
+          <p>
+            Call duration is only known AFTER the call completes. In production,
+            we cannot use this to predict subscription. Removing it ensures our
+            model is deployable in real-world scenarios and prevents data leakage.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END KEY INSIGHTS -->
+
+
+  <!-- ============================================
+       NEXT STEP CTA
+       ============================================ -->
+  <section class="next-step-cta">
+    <div class="container">
+      <div class="next-step-content">
+        <span class="next-step-label">Next Step</span>
+        <h3>📈 Logistic Regression</h3>
+        <p>Training our first classification model</p>
+        <a href="logistic.html" class="btn btn-primary">
+          <i class="fas fa-arrow-right"></i> Go to Logistic Regression
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- END NEXT STEP -->
+
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer>
+    <p>
+      🏦 Bank Marketing Campaign &nbsp;|&nbsp;
+      Machine Learning Project &nbsp;|&nbsp;
+      <span>Al-Zaytoonah University of Jordan (ZUJ) — 2026</span> &nbsp;|&nbsp;
+      Supervised by <span>Ms. Nesreen Hamad</span>
+    </p>
+  </footer>
+  <!-- END FOOTER -->
+
+
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+  <!--
+  <script>
+    /* ----- Mobile Menu Toggle ----- */
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    /* ----- Active nav link ----- */
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      if (link.href === window.location.href) {
+        link.classList.add('active');
+      }
+    });
+
+    /* ----- Animate step cards on scroll ----- */
+    const stepCards = document.querySelectorAll('.pre-step-card');
+    const stepObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('step-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    stepCards.forEach(card => stepObserver.observe(card));
+  </script>
+  -->
+  <script src="js/main.js"></script>
+
+  <!-- ============================================
+       Floating Repository Button (Fixed)
+       ============================================ -->
+  <a class="repo-float"
+     href="https://github.com/khaledAlzeer/bank-marketing-ml-project"
+     target="_blank"
+     title="Project Repository">
+    <i class="fab fa-github"></i>
+    <span>Repo</span>
+  </a>
+
+</body>
+</html>
