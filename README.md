@@ -21,7 +21,7 @@
 
 This is a **complete machine learning classification project** that predicts whether customers will subscribe to a bank's term deposit. The project combines advanced data science techniques with an interactive, production-ready web dashboard to present findings, visualizations, and model comparisons.
 
-Using the **UCI Bank Marketing Dataset** (41,188 records), we implemented and compared **4 classification models** to identify the most effective approach for customer conversion prediction.
+Using the **UCI Bank Marketing Dataset** (45,211 records), we implemented and compared **4 classification models** to identify the most effective approach for customer conversion prediction.
 
 🏆 **Key Achievement:** **XGBoost achieved 88.2% accuracy with 0.79 AUC score** — the best-performing model
 
@@ -144,9 +144,9 @@ bank-marketing-project/
 | Rank | Model | Accuracy | F1 (C1) | AUC | Winner |
 |------|-------|----------|---------|-----|--------|
 | 🥇 1st | ⚡ XGBoost | **88.2%** | **0.46** | **0.79** | 🏆 |
-| 🥈 2nd | 🌲 Random Forest | 87.9% | 0.40 | 0.78 | — |
+| 🥈 2nd | 🌲 Random Forest | 87.9% | 0.40 | 0.77 | — |
 | 🥉 3rd | 📈 Logistic Regression | 87.6% | 0.42 | 0.73 | — |
-| 4th | 🌿 Decision Tree | 81.3% | 0.32 | 0.62 | — |
+| 4th | 🌿 Decision Tree | 81.3% | 0.32 | 0.61 | — |
 
 ---
 
@@ -154,8 +154,8 @@ bank-marketing-project/
 
 ### 📊 Data Insights
 
-- **Original Dataset:** 41,188 customer records
-- **Features:** 20 attributes (demographics, financial, campaign-related)
+- **Original Dataset:** 45,211 customer records
+- **Features:** 17 attributes (demographics, financial, campaign-related)
 - **Class Imbalance:** 11.7% subscriptions → Balanced to 50% using SMOTE
 - **Train Set:** 63,870 samples | **Test Set:** 9,042 samples
 
@@ -164,7 +164,7 @@ bank-marketing-project/
 1. **XGBoost Dominance** — Sequential error-correction captures complex patterns effectively
 2. **High Accuracy** — All top-3 models achieve 87%+ accuracy
 3. **Recall is Critical** — Better to contact potential customers than miss opportunities
-4. **Random Forest Trade-off** — Highest precision (0.57) but lower recall (0.31)
+4. **Random Forest Trade-off** — Decent precision (0.48) but lowest recall (0.34) among top models
 
 ### 💡 Business Recommendations
 
@@ -283,9 +283,10 @@ python -m http.server 8000
 
 | Member | Role |
 |--------|------|
-| 👨‍💼 **Khaled Alzeer** | Project Manager · Data Analyst · Python Developer · Full-Stack Developer |
+| 👨‍💼 **Khaled Alzeer** | Project Manager · Data Analyst · Python Developer · Full-Stack Developer . Documentation|
+| 👨‍💼 **Ahmad** | Team Member · Data Analysis & Model Evaluation |
 | 👨‍💼 **Hamza** | Team Member · Data Analysis & Model Evaluation |
-| 👨‍💼 **Ahmad** | Team Member · Data Processing & Documentation |
+
 
 - 👨‍🏫 **Supervised by:** Ms. Nesreen Hamad
 - 🏫 **Institution:** Al-Zaytoonah University of Jordan (ZUJ)
@@ -385,9 +386,9 @@ Decision Support Systems, 62, 22-31.
 
 ### Trade-offs Analysis
 
-- **Random Forest:** High precision (0.57) but lower recall (0.31) — More conservative
-- **Logistic Regression:** Balanced approach, simpler model
-- **Decision Tree:** Lowest performance — Prone to overfitting
+- **Random Forest:** Decent precision (0.48) but lowest recall (0.34) among top models — More conservative
+- **Logistic Regression:** Balanced approach (Precision: 0.46, Recall: 0.38) — simpler model
+- **Decision Tree:** Lowest performance (Precision: 0.28, AUC: 0.61) — Prone to overfitting
 
 ---
 
