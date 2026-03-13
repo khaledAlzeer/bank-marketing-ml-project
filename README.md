@@ -213,9 +213,9 @@ bank-marketing-project/
 ```
 Data Collection (UCI Bank Marketing)
         ↓
-Preprocessing (Cleaning + Encoding + SMOTE)
-        ↓
 Exploratory Data Analysis (EDA)
+        ↓
+Preprocessing (Cleaning + Encoding + SMOTE)
         ↓
 Feature Engineering & Selection
         ↓
