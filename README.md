@@ -11,8 +11,8 @@
 
 ---
 
-🌐 **Live Website:**
-[View Live Website](https://khaledalzeer.github.io/bank-marketing-ml-project/Bank-Marketing-ML-Project/website/)
+- 🌐 **Live Website:**
+- [View Live Website](https://khaledalzeer.github.io/bank-marketing-ml-project/Bank-Marketing-ML-Project/website/)
 
 ---
 
