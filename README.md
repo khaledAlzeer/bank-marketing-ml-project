@@ -213,9 +213,9 @@ bank-marketing-project/
 ```
 Data Collection (UCI Bank Marketing)
         ↓
-Exploratory Data Analysis (EDA)
-        ↓
 Preprocessing (Cleaning + Encoding + SMOTE)
+        ↓
+Exploratory Data Analysis (EDA)
         ↓
 Feature Engineering & Selection
         ↓
@@ -395,6 +395,7 @@ Decision Support Systems, 62, 22-31.
 
 - 🌐 **Live Website:** [PUT_YOUR_LIVE_URL_HERE]
 - 📦 **Repository:** [github.com/khaledAlzeer/bank-marketing-ml-project](https://github.com/khaledAlzeer/bank-marketing-ml-project)
+- ☁️ **Google Drive (Colab Notebooks):** [ML Project Folder](https://drive.google.com/drive/folders/1w9RMLklaXUzbeOahmasf52B8WRysMDAc)
 - 📊 **Dataset Source:** [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Bank+Marketing)
 
 ---
