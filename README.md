@@ -284,8 +284,8 @@ python -m http.server 8000
 | Member | Role |
 |--------|------|
 | 👨‍💼 **Khaled Alzeer** | Project Manager · Data Analyst · Python Developer · Full-Stack Developer . Documentation|
-| 👨‍💼 **Ahmad** | Team Member · Data Analysis & Model Evaluation |
-| 👨‍💼 **Hamza** | Team Member · Data Analysis & Model Evaluation |
+| 👨‍💼 **Ahmad** | Team Member · Data Processing & Model Evaluation |
+| 👨‍💼 **Hamza** | Team Member · Data Analysis & Documentation |
 
 
 - 👨‍🏫 **Supervised by:** Ms. Nesreen Hamad
