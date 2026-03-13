@@ -59,7 +59,7 @@ bank-marketing-project/
 │   └── XGBoost.ipynb
 │
 ├── 📊 data/
-│   ├── bank-full.csv              ← Original Dataset (UCI — 41,188 rows)
+│   ├── bank-full.csv              ← Original Dataset (UCI — 45,211 rows)
 │   └── processed/
 │       ├── train.csv              ← After SMOTE (63,870 rows)
 │       └── test.csv               ← Test Set (9,042 rows)
