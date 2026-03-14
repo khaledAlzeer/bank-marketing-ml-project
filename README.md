@@ -282,10 +282,9 @@ python -m http.server 8000
 
 | Member | Role |
 |--------|------|
-| 👨‍💼 **Khaled Alzeer** | Project Manager · Data Analyst · Python Developer · Full-Stack Developer . Documentation|
-| 👨‍💼 **Ahmad** | Team Member · Data Processing & Model Evaluation |
-| 👨‍💼 **Hamza** | Team Member · Data Analysis & Documentation |
-
+| 👨‍💼 **[Khaled Alzeer](https://github.com/khaledAlzeer)** | Project Manager · Data Analyst · Python Developer · Full-Stack Developer |
+| 👨‍💼 **[Ahmad Almashayikh](https://github.com/ahmadradwan06)** | Team Member · Data Processing & Model Evaluation |
+| 👨‍💼 **[Hamza Haider](https://github.com/hamza-f3)** | Team Member · Data Analysis & Documentation |
 
 - 👨‍🏫 **Supervised by:** Ms. Nesreen Hamad
 - 🏫 **Institution:** Al-Zaytoonah University of Jordan (ZUJ)
