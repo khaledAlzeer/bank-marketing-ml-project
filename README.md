@@ -280,11 +280,11 @@ python -m http.server 8000
 
 ## 👥 Project Team
 
-| Member | Role |
-|--------|------|
-| 👨‍💼 **[Khaled Alzeer](https://github.com/khaledAlzeer)** | Project Manager · Data Analyst · Python Developer · Full-Stack Developer |
-| 👨‍💼 **[Ahmad Almashayikh](https://github.com/ahmadradwan06)** | Team Member · Data Processing & Model Evaluation |
-| 👨‍💼 **[Hamza Haider](https://github.com/hamza-f3)** | Team Member · Data Analysis & Documentation |
+| Member | Role | Contributions |
+|--------|------|---|
+| 👨‍💼 **[Khaled Alzeer](https://github.com/khaledAlzeer)** | **Project Manager** · **Data Analyst** · **ML Engineer** · **Python Developer** · **Full-Stack Developer** · **Website Developer** | 🌐 Website Design & Development · 📊 EDA & Data Analysis · 🤖 All 4 ML Models · 🔧 Data Processing · ✅ Model Evaluation · 📈 Visualizations · 📚 Documentation |
+| 👨‍💼 **[Ahmad Almashayikh](https://github.com/ahmadradwan06)** | Team Member · Data Processing Support | 🔧 Data Cleaning Support · 📋 Preprocessing Support |
+| 👨‍💼 **[Hamza Haider](https://github.com/hamza-f3)** | Team Member · Documentation Support | 📚 Documentation Support · 📊 Analysis Support |
 
 - 👨‍🏫 **Supervised by:** Ms. Nesreen Hamad
 - 🏫 **Institution:** Al-Zaytoonah University of Jordan (ZUJ)
