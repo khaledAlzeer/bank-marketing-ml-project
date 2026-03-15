@@ -282,7 +282,7 @@ python -m http.server 8000
 
 | Member | Role | Contributions |
 |--------|------|---|
-| 👨‍💼 **[Khaled Alzeer](https://github.com/khaledAlzeer)** | **Project Manager** · **Data Analyst** · **ML Engineer** · **Python Developer** · **Full-Stack Developer** · **Website Developer** | 🌐 Website Design & Development · 📊 EDA & Data Analysis · 🤖 All 4 ML Models · 🔧 Data Processing · ✅ Model Evaluation · 📈 Visualizations · 📚 Documentation |
+| 👨‍💼 **[Khaled Alzeer](https://github.com/khaledAlzeer)** | **Project Manager** · **Data Analyst** · **ML Engineer** · **Python Developer** · **Full-Stack Developer** · **Website Developer** | 🌐 Website Design & Development · 📊 EDA & Data Analysis · 🔧 Data Processing . 🤖 All 4 ML Models · ✅ Model Evaluation · 📈 Visualizations · 📚 Documentation |
 | 👨‍💼 **[Ahmad Almashayikh](https://github.com/ahmadradwan06)** | Team Member · Data Processing Support | 🔧 Data Cleaning Support · 📋 Preprocessing Support |
 | 👨‍💼 **[Hamza Haider](https://github.com/hamza-f3)** | Team Member · Documentation Support | 📚 Documentation Support · 📊 Analysis Support |
 
