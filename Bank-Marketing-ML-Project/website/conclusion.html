@@ -138,17 +138,23 @@
 
       <div class="findings-grid">
 
-        <div class="finding-card finding-data">
-          <div class="finding-num">01</div>
-          <div class="finding-icon">📞</div>
-          <h3>Call Duration is King</h3>
-          <p>
-            <strong>Duration</strong> of the last call is the strongest
-            predictor of subscription. Longer calls indicate higher
-            customer engagement and interest — making it the most
-            valuable feature in our models.
-          </p>
+      <div class="finding-card finding-data">
+        <div class="finding-num">01</div>
+        <div class="finding-icon">📞</div>
+        <h3>Call Duration is King</h3>
+        <p>
+          <strong>Duration</strong> of the last call is the strongest
+          predictor of subscription. Longer calls indicate higher
+          customer engagement and interest — making it the most
+          valuable feature in our models.
+        </p>
+        <div class="leakage-warning">
+          ⚠️ <strong>Why remove duration?</strong> Call duration is only known
+          <em>after</em> the call completes. In production, we cannot use this
+          to predict subscription. Removing it ensures our model is deployable
+          in real-world scenarios and prevents <strong>data leakage</strong>.
         </div>
+      </div>
 
         <div class="finding-card finding-model">
           <div class="finding-num">02</div>
