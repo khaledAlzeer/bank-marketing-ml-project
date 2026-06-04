@@ -167,76 +167,76 @@
   <!-- END WHAT IS DT -->
 
 
-  <!-- ============================================
-       SECTION 2 — How It Works
-       ============================================ -->
-  <section class="section section-alt">
-    <div class="container">
+<!-- ============================================
+     SECTION 2 — How It Works
+     ============================================ -->
+<section class="section section-alt">
+  <div class="container">
 
-      <div class="section-header">
-        <h2>🌿 How Does It Work?</h2>
-        <p>The decision-making process visualized</p>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="dt-flow">
-        <div class="dt-node dt-root">
-          <span class="dt-node-label">Root Node</span>
-          <p>duration > 300s?</p>
-        </div>
-        <div class="dt-branches">
-          <div class="dt-branch">
-            <div class="dt-branch-label">YES ✅</div>
-            <div class="dt-node dt-inner">
-              <span class="dt-node-label">Internal Node</span>
-              <p>poutcome = success?</p>
-            </div>
-            <div class="dt-branches dt-small">
-              <div class="dt-branch">
-                <div class="dt-branch-label">YES</div>
-                <div class="dt-node dt-leaf dt-yes">
-                  <span>🟢 Leaf</span>
-                  <p><strong>YES</strong></p>
-                </div>
-              </div>
-              <div class="dt-branch">
-                <div class="dt-branch-label">NO</div>
-                <div class="dt-node dt-leaf dt-maybe">
-                  <span>🟡 Leaf</span>
-                  <p><strong>Maybe</strong></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dt-branch">
-            <div class="dt-branch-label">NO ❌</div>
-            <div class="dt-node dt-inner">
-              <span class="dt-node-label">Internal Node</span>
-              <p>balance > 1000?</p>
-            </div>
-            <div class="dt-branches dt-small">
-              <div class="dt-branch">
-                <div class="dt-branch-label">YES</div>
-                <div class="dt-node dt-leaf dt-maybe">
-                  <span>🟡 Leaf</span>
-                  <p><strong>Maybe</strong></p>
-                </div>
-              </div>
-              <div class="dt-branch">
-                <div class="dt-branch-label">NO</div>
-                <div class="dt-node dt-leaf dt-no">
-                  <span>🔴 Leaf</span>
-                  <p><strong>NO</strong></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div class="section-header">
+      <h2>🌿 How Does It Work?</h2>
+      <p>The decision-making process visualized</p>
+      <div class="section-line"></div>
     </div>
-  </section>
-  <!-- END HOW IT WORKS -->
+
+    <div class="dt-flow">
+      <div class="dt-node dt-root">
+        <span class="dt-node-label">Root Node</span>
+        <p>poutcome_success ≤ 0.50?</p>
+      </div>
+      <div class="dt-branches">
+        <div class="dt-branch">
+          <div class="dt-branch-label">NO ❌</div>
+          <div class="dt-node dt-inner">
+            <span class="dt-node-label">Internal Node</span>
+            <p>housing ≤ 0.50?</p>
+          </div>
+          <div class="dt-branches dt-small">
+            <div class="dt-branch">
+              <div class="dt-branch-label">YES</div>
+              <div class="dt-node dt-leaf dt-maybe">
+                <span>🟡 Leaf</span>
+                <p><strong>balance ≤ -0.42?</strong></p>
+              </div>
+            </div>
+            <div class="dt-branch">
+              <div class="dt-branch-label">NO</div>
+              <div class="dt-node dt-leaf dt-no">
+                <span>🔴 Leaf</span>
+                <p><strong>contact_cellular ≤ 0.50?</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dt-branch">
+          <div class="dt-branch-label">YES ✅</div>
+          <div class="dt-node dt-inner">
+            <span class="dt-node-label">Internal Node</span>
+            <p>housing ≤ 0.50?</p>
+          </div>
+          <div class="dt-branches dt-small">
+            <div class="dt-branch">
+              <div class="dt-branch-label">YES</div>
+              <div class="dt-node dt-leaf dt-yes">
+                <span>🟢 Leaf</span>
+                <p><strong>campaign ≤ 0.40?</strong></p>
+              </div>
+            </div>
+            <div class="dt-branch">
+              <div class="dt-branch-label">NO</div>
+              <div class="dt-node dt-leaf dt-maybe">
+                <span>🟡 Leaf</span>
+                <p><strong>campaign ≤ 0.08?</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- END HOW IT WORKS -->
 
 
   <!-- ============================================
